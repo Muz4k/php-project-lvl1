@@ -1,7 +1,10 @@
 {
-    "name": "muz4k/php-project-lvl1",
+    "name": "muz4k/brain-games",
     "description": "first Hexlet project",
-    "type": "project",
+    "type": "library",
+    "bin": [
+        "bin/brain-games"
+    ],
     "authors": [
         {
             "name": "Muz4k",
