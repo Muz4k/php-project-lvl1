@@ -1,0 +1,12 @@
+{
+    "name": "muz4k/php-project-lvl1",
+    "description": "first Hexlet project",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Muz4k",
+            "email": "muz4k.oo@gmail.com"
+        }
+    ],
+    "require": {}
+}
