@@ -3,7 +3,8 @@
     "description": "first Hexlet project",
     "type": "library",
     "bin": [
-        "bin/brain-games"
+        "bin/brain-games",
+        "bin/brain-even"
     ],
     "authors": [
         {
@@ -21,6 +22,9 @@
         "phpcs": "phpcs"
     },
     "autoload": {
-        "files": ["src/cli.php"]
+        "files": [
+            "src/cli.php",
+            "src/even.php"
+        ]
     }
 }

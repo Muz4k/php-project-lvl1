@@ -5,9 +5,16 @@ namespace BrainGames\Cli;
 use function cli\line;
 use function cli\prompt;
 
-function run()
+function welcome($phraseGame = null)
 {
     line('Welcome to the Brain Game!');
+    line($phraseGame);
     $name = prompt('May I have your name?');
-    line("Hello, %s!", $name);
+    define("NAME", $name);
+    line("Hello, %s!", NAME);
+}
+
+function farewell()
+{
+    line('Congratulations, %s!', NAME);
 }
