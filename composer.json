@@ -2,6 +2,7 @@
     "name": "muz4k/brain-games",
     "description": "first Hexlet project",
     "type": "library",
+    "minimum-stability": "dev",
     "bin": [
         "bin/brain-games",
         "bin/brain-even"
