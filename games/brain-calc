@@ -11,5 +11,9 @@ if (file_exists($globalAutoloadPath)) {
 }
 
 use function BrainGames\Cli\sayWelcome;
+use function BrainGames\Cli\sayCongratulations;
+use function BrainGames\Games\printGame;
 
-sayWelcome();
+sayWelcome("What is the result of the expression?");
+printGame("calc");
+sayCongratulations();
