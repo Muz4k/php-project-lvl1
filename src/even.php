@@ -11,11 +11,11 @@ function isEven($number): bool
 
 function goEvenGame()
 {
-    $gameData = function ($count = 0) use (&$gameData) {
+    $gameData = function ($count) use (&$gameData) {
         $expression = rand(1, 99);
         $correctAnswer = isEven($expression) ? 'yes' : 'no';
         return printGame($expression, $correctAnswer, $count, $gameData);
     };
 
-    return $gameData();
+    return $gameData($count = 0);
 }

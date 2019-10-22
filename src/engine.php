@@ -18,19 +18,20 @@ function sayWelcome($phraseGame = null)
 
 function printGame($expression, $correctAnswer, $count, $currentGame)
 {
-    if ($count === 3) {
-        line("Congratulations, %s!", NAME);
-        return true;
-    }
+
     line("Question: %s", $expression);
     $userAnswer = prompt("Your answer");
     if ($userAnswer === (string)$correctAnswer) {
         line("Correct!");
         $count++;
-    } else {
-        err("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
-        line("Let's try again, %s!", NAME);
-        $count = 0;
+        if ($count === 3) {
+            line("Congratulations, %s!", NAME);
+            return true;
+        }
+        return $currentGame($count);
     }
-    return $currentGame($count);
+    err("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
+    line("Let's try again, %s!", NAME);
+
+    return false;
 }
