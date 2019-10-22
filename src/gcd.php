@@ -19,8 +19,8 @@ function findGcd($firstNumber, $secondNumber)
 function goGcdGame()
 {
     $gameData = function ($count = 0) use (&$gameData) {
-        $firstNumber = rand(1,99);
-        $secondNumber = rand(1,99);
+        $firstNumber = rand(1, 99);
+        $secondNumber = rand(1, 99);
         $expression = "{$firstNumber} {$secondNumber}";
         $correctAnswer = findGcd($firstNumber, $secondNumber);
         return printGame($expression, $correctAnswer, $count, $gameData);
