@@ -1,0 +1,18 @@
+#!/usr/bin/php
+
+<?php
+
+$globalAutoloadPath = __DIR__ . '/../../../autoload.php';
+$projectAutoloadPath = __DIR__ . '/../vendor/autoload.php';
+if (file_exists($globalAutoloadPath)) {
+    require_once $globalAutoloadPath;
+} else {
+    require_once $projectAutoloadPath;
+}
+
+use function BrainGames\Progression\goProgressionGame;
+use function BrainGames\Games\sayWelcome;
+
+
+sayWelcome("What number is missing in the progression?");
+goProgressionGame();

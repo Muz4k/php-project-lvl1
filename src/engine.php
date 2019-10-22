@@ -10,6 +10,7 @@ function sayWelcome($phraseGame = null)
 {
     line('Welcome to the Brain Game!');
     line($phraseGame);
+    line();
     $name = prompt('May I have your name?');
     define("NAME", $name);
     line("Hello, %s!", NAME);
