@@ -13,5 +13,5 @@ if (file_exists($globalAutoloadPath)) {
 use function BrainGames\Games\sayWelcome;
 use function BrainGames\Even\goEvenGame;
 
-sayWelcome();
+sayWelcome("Answer \"yes\" if the number is even, otherwise answer \"no\".");
 goEvenGame();
