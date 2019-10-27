@@ -2,9 +2,7 @@
 
 namespace  BrainGames\Prime;
 
-use function BrainGames\Games\printGame;
-use function BrainGames\Games\sayGoodbye;
-use function BrainGames\Games\sayWelcomeGetName;
+use function BrainGames\Games\goGame;
 
 function isPrime($number): bool
 {
@@ -19,16 +17,13 @@ function isPrime($number): bool
     return true;
 }
 
-function goPrimeGame()
+function getPrimeGame()
 {
-    $name = sayWelcomeGetName("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
-
-    $getGameData = function () {
+    $phraseGame = "Answer \"yes\" if given number is prime. Otherwise answer \"no\".";
+    $currentData = function () use ($phraseGame) {
         $questionGame = rand(1, 99);
         $correctAnswer = isPrime($questionGame) ? 'yes' : 'no';
-        return [$questionGame, $correctAnswer];
+        return [$phraseGame, $questionGame, $correctAnswer];
     };
-
-    $gameResult = printGame($getGameData);
-    sayGoodbye($name, $gameResult);
+    goGame($currentData);
 }

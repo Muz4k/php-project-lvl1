@@ -2,9 +2,7 @@
 
 namespace  BrainGames\Progression;
 
-use function BrainGames\Games\printGame;
-use function BrainGames\Games\sayGoodbye;
-use function BrainGames\Games\sayWelcomeGetName;
+use function BrainGames\Games\goGame;
 
 function makeProgression($member, $step, $numOfMembers, $result = [])
 {
@@ -20,12 +18,10 @@ function makeSpace($memberSpace, $progression, $space = '..')
     $progression[$memberSpace] = $space;
     return $progression;
 }
-
-function goProgressionGame()
+function getProgressionGame()
 {
-    $name = sayWelcomeGetName("What number is missing in the progression?");
-
-    $getGameData = function () {
+    $currentData = function () {
+        $phraseGame = "What number is missing in the progression?";
         $member = rand(0, 5);
         $step = rand(2, 5);
         $numOfMembers = 10;
@@ -33,9 +29,7 @@ function goProgressionGame()
         $arrayMembers = makeProgression($member, $step, $numOfMembers);
         $correctAnswer = $arrayMembers[$memberSpace];
         $questionGame = implode(' ', makeSpace($memberSpace, $arrayMembers));
-        return [$questionGame, $correctAnswer];
+        return [$phraseGame, $questionGame, $correctAnswer];
     };
-
-    $gameResult = printGame($getGameData);
-    sayGoodbye($name, $gameResult);
+    goGame($currentData);
 }
