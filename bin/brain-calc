@@ -10,8 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\Games\sayWelcome;
-use function BrainGames\Prime\goPrimeGame;
+use function BrainGames\Calc\goCalcGame;
 
-sayWelcome("Answer \"yes\" if given number is prime. Otherwise answer \"no\".");
-goPrimeGame();
+goCalcGame();

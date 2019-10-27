@@ -10,9 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\Calc\goCalcGame;
-use function BrainGames\Games\sayWelcome;
+use function BrainGames\Even\goEvenGame;
 
-
-sayWelcome("What is the result of the expression?");
-goCalcGame();
+goEvenGame();

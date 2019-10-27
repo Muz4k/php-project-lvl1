@@ -10,8 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\Games\sayWelcome;
 use function BrainGames\GreatestCommonDivision\goGcdGame;
 
-sayWelcome("Find the greatest common divisor of given numbers.");
 goGcdGame();

@@ -1,16 +1,14 @@
 {
     "name": "muz4k/brain-games",
     "description": "first Hexlet project",
-    "type": "library",
+    "type": "project",
     "keywords": ["games", "keywords", "nice"],
-    "minimum-stability": "dev",
     "bin": [
-        "bin/brain-games",
-        "games/brain-even",
-        "games/brain-calc",
-        "games/brain-gcd",
-        "games/brain-progression",
-        "games/brain-prime"
+        "bin/brain-even",
+        "bin/brain-calc",
+        "bin/brain-gcd",
+        "bin/brain-progression",
+        "bin/brain-prime"
     ],
     "authors": [
         {
@@ -29,12 +27,12 @@
     },
     "autoload": {
         "files": [
-            "src/even.php",
+            "src/games/even.php",
             "src/engine.php",
-            "src/calc.php",
-            "src/gcd.php",
-            "src/progression.php",
-            "src/prime.php"
+            "src/games/calc.php",
+            "src/games/gcd.php",
+            "src/games/progression.php",
+            "src/games/prime.php"
         ]
     }
 }

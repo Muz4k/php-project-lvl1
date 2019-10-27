@@ -10,9 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\Progression\goProgressionGame;
-use function BrainGames\Games\sayWelcome;
+use function BrainGames\Prime\goPrimeGame;
 
-
-sayWelcome("What number is missing in the progression?");
-goProgressionGame();
+goPrimeGame();

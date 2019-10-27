@@ -10,8 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\Games\sayWelcome;
-use function BrainGames\Even\goEvenGame;
+use function BrainGames\Progression\goProgressionGame;
 
-sayWelcome("Answer \"yes\" if the number is even, otherwise answer \"no\".");
-goEvenGame();
+goProgressionGame();

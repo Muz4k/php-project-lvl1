@@ -3,6 +3,8 @@
 namespace  BrainGames\Calc;
 
 use function BrainGames\Games\printGame;
+use function BrainGames\Games\sayGoodbye;
+use function BrainGames\Games\sayWelcomeGetName;
 
 function calculateCorrectAnswer($operator, $firstNumber, $secondNumber)
 {
@@ -18,15 +20,17 @@ function calculateCorrectAnswer($operator, $firstNumber, $secondNumber)
 
 function goCalcGame()
 {
-    $gameData = function ($count = 0) use (&$gameData) {
+    $name = sayWelcomeGetName("What is the result of the expression?");
+    $operators = ["+", "-", "*"];
+    $getGameData = function () use ($operators) {
         $firstNumber = rand(1, 99);
         $secondNumber = rand(1, 99);
-        $arrayOfOperators = ["+", "-", "*"];
-        $currentOperator = $arrayOfOperators[array_rand($arrayOfOperators, 1)];
-        $expression = "{$firstNumber} {$currentOperator} {$secondNumber}";
+        $currentOperator = $operators[array_rand($operators, 1)];
+        $questionGame = "{$firstNumber} {$currentOperator} {$secondNumber}";
         $correctAnswer = calculateCorrectAnswer($currentOperator, $firstNumber, $secondNumber);
-        return printGame($expression, $correctAnswer, $count, $gameData);
+        return [$questionGame, $correctAnswer];
     };
 
-    return $gameData();
+    $gameResult = printGame($getGameData);
+    sayGoodbye($name, $gameResult);
 }

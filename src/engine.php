@@ -6,33 +6,32 @@ use function cli\line;
 use function cli\err;
 use function cli\prompt;
 
-function sayWelcome($phraseGame = null)
+function sayWelcomeGetName($phraseGame = null)
 {
     line('Welcome to the Brain Game!');
     line($phraseGame);
     line();
-    $name = prompt('May I have your name?');
-    define("NAME", $name);
-    line("Hello, %s!", NAME);
+    $nameGamer = prompt('May I have your name?');
+    line("Hello, %s!", $nameGamer);
+    return $nameGamer;
 }
-
-
-function printGame($expression, $correctAnswer, $count, $currentGame)
+function printGame($gameData)
 {
-
-    line("Question: %s", $expression);
-    $userAnswer = prompt("Your answer");
-    if ($userAnswer === (string)$correctAnswer) {
-        line("Correct!");
-        $count++;
-        if ($count === 3) {
-            line("Congratulations, %s!", NAME);
-            return true;
+    $gameRounds = 3;
+    for ($roundCount = 0; $roundCount < $gameRounds; $roundCount++) {
+        [$questionGame, $correctAnswer] = $gameData();
+        line("Question: %s", $questionGame);
+        $userAnswer = prompt("Your answer");
+        if ($userAnswer !== (string)$correctAnswer) {
+            err("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
+            return false;
         }
-        return $currentGame($count);
+            line("Correct!");
     }
-    err("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
-    line("Let's try again, %s!", NAME);
-
-    return false;
+    return true;
+}
+function sayGoodbye($nameGamer, $gameResult)
+{
+    $phraseBye = $gameResult ? "Congratulations, %s!" : "Let's try again, %s!";
+    line($phraseBye, $nameGamer);
 }

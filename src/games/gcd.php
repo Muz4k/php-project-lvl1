@@ -3,6 +3,8 @@
 namespace  BrainGames\GreatestCommonDivision;
 
 use function BrainGames\Games\printGame;
+use function BrainGames\Games\sayGoodbye;
+use function BrainGames\Games\sayWelcomeGetName;
 
 function findGcd($firstNumber, $secondNumber)
 {
@@ -18,13 +20,16 @@ function findGcd($firstNumber, $secondNumber)
 
 function goGcdGame()
 {
-    $gameData = function ($count = 0) use (&$gameData) {
+    $name = sayWelcomeGetName("Find the greatest common divisor of given numbers.");
+
+    $getGameData = function () {
         $firstNumber = rand(1, 99);
         $secondNumber = rand(1, 99);
-        $expression = "{$firstNumber} {$secondNumber}";
+        $questionGame = "{$firstNumber} {$secondNumber}";
         $correctAnswer = findGcd($firstNumber, $secondNumber);
-        return printGame($expression, $correctAnswer, $count, $gameData);
+        return [$questionGame, $correctAnswer];
     };
 
-    return $gameData();
+    $gameResult = printGame($getGameData);
+    sayGoodbye($name, $gameResult);
 }

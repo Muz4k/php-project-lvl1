@@ -3,6 +3,8 @@
 namespace  BrainGames\Progression;
 
 use function BrainGames\Games\printGame;
+use function BrainGames\Games\sayGoodbye;
+use function BrainGames\Games\sayWelcomeGetName;
 
 function makeProgression($member, $step, $numOfMembers, $result = [])
 {
@@ -21,16 +23,19 @@ function makeSpace($memberSpace, $progression, $space = '..')
 
 function goProgressionGame()
 {
-    $gameData = function ($count = 0) use (&$gameData) {
+    $name = sayWelcomeGetName("What number is missing in the progression?");
+
+    $getGameData = function () {
         $member = rand(0, 5);
         $step = rand(2, 5);
         $numOfMembers = 10;
         $memberSpace = rand(0, $numOfMembers - 1);
         $arrayMembers = makeProgression($member, $step, $numOfMembers);
         $correctAnswer = $arrayMembers[$memberSpace];
-        $expression = implode(' ', makeSpace($memberSpace, $arrayMembers));
-        return printGame($expression, $correctAnswer, $count, $gameData);
+        $questionGame = implode(' ', makeSpace($memberSpace, $arrayMembers));
+        return [$questionGame, $correctAnswer];
     };
 
-    return $gameData();
+    $gameResult = printGame($getGameData);
+    sayGoodbye($name, $gameResult);
 }
