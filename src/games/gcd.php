@@ -1,30 +1,31 @@
 <?php
 
-namespace  BrainGames\GreatestCommonDivision;
+namespace  BrainGames\games\gcd;
 
-use function BrainGames\Games\goGame;
+use function BrainGames\printGame;
 
-function findGcd($firstNumber, $secondNumber)
+const TASK_GCD_GAME = "Find the greatest common divisor of given numbers.";
+
+function findGcd($firstOperand, $secondOperand): string
 {
-    while ($firstNumber !== 0 && $secondNumber !== 0) {
-        if ($firstNumber > $secondNumber) {
-            $firstNumber = $firstNumber % $secondNumber;
+    while ($firstOperand !== 0 && $secondOperand !== 0) {
+        if ($firstOperand > $secondOperand) {
+            $firstOperand = $firstOperand % $secondOperand;
         } else {
-            $secondNumber = $secondNumber % $firstNumber;
+            $secondOperand = $secondOperand % $firstOperand;
         }
     }
-    return $firstNumber + $secondNumber;
+    return $firstOperand + $secondOperand;
 }
 
-function getGcdGame()
+function startGcdGame()
 {
-    $phraseGame = "Find the greatest common divisor of given numbers.";
-    $currentData = function () use ($phraseGame) {
-        $firstNumber = rand(1, 99);
-        $secondNumber = rand(1, 99);
-        $questionGame = "{$firstNumber} {$secondNumber}";
-        $correctAnswer = findGcd($firstNumber, $secondNumber);
-        return [$phraseGame, $questionGame, $correctAnswer];
+    $getCurrentData = function () {
+        $firstOperand = rand(1, 99);
+        $secondOperand = rand(1, 99);
+        $questionGame = "{$firstOperand} {$secondOperand}";
+        $correctAnswer = findGcd($firstOperand, $secondOperand);
+        return [$questionGame, $correctAnswer];
     };
-    goGame($currentData);
+    printGame($getCurrentData, TASK_GCD_GAME);
 }

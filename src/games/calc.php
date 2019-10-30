@@ -1,33 +1,34 @@
 <?php
 
-namespace  BrainGames\Calc;
+namespace  BrainGames\games\calc;
 
-use function BrainGames\Games\goGame;
+use function BrainGames\printGame;
 
-function calculateCorrectAnswer($operator, $firstNumber, $secondNumber)
+const TASK_CALC_GAME = "What is the result of the expression?";
+const OPERATORS = ["+", "-", "*"];
+
+function calculateCorrectAnswer($expressionOperator, $firstOperand, $secondOperand): string
 {
-    switch ($operator) {
+    switch ($expressionOperator) {
         case "+":
-            return $firstNumber + $secondNumber;
+            return $firstOperand + $secondOperand;
         case "-":
-            return $firstNumber - $secondNumber;
+            return $firstOperand - $secondOperand;
         case "*":
-            return $firstNumber * $secondNumber;
+            return $firstOperand * $secondOperand;
     }
 }
 
-function getCalcGame()
+function startCalcGame()
 {
-    $phraseGame = "What is the result of the expression?";
-    $operators = ["+", "-", "*"];
-    $currentGame = function () use ($operators, $phraseGame) {
-        $firstNumber = rand(1, 99);
-        $secondNumber = rand(1, 99);
-        $currentOperator = $operators[array_rand($operators, 1)];
-        $questionGame = "{$firstNumber} {$currentOperator} {$secondNumber}";
-        $correctAnswer = calculateCorrectAnswer($currentOperator, $firstNumber, $secondNumber);
-        return [$phraseGame, $questionGame, $correctAnswer];
+    $getCurrentData = function () {
+        $firstOperand = rand(1, 99);
+        $secondOperand = rand(1, 99);
+        $expressionOperator = OPERATORS[array_rand(OPERATORS, 1)];
+        $questionGame = "{$firstOperand} {$expressionOperator} {$secondOperand}";
+        $correctAnswer = calculateCorrectAnswer($expressionOperator, $firstOperand, $secondOperand);
+        return [$questionGame, $correctAnswer];
     };
 
-    goGame($currentGame);
+    printGame($getCurrentData, TASK_CALC_GAME);
 }

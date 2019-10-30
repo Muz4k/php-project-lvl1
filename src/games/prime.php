@@ -1,29 +1,30 @@
 <?php
 
-namespace  BrainGames\Prime;
+namespace  BrainGames\games\prime;
 
-use function BrainGames\Games\goGame;
+use function BrainGames\printGame;
 
-function isPrime($number): bool
+const TASK_PRIME_GAME = 'Answer "yes" if given number is prime. Otherwise answer "no".';
+
+function isPrime($operand): bool
 {
-    if ($number === 1) {
+    if ($operand === 1) {
         return false;
     }
-    for ($divisor = 2; $divisor <= $number / 2; $divisor++) {
-        if ($number % $divisor === 0) {
+    for ($divisor = 2; $divisor <= $operand / 2; $divisor++) {
+        if ($operand % $divisor === 0) {
             return false;
         }
     }
     return true;
 }
 
-function getPrimeGame()
+function startPrimeGame()
 {
-    $phraseGame = "Answer \"yes\" if given number is prime. Otherwise answer \"no\".";
-    $currentData = function () use ($phraseGame) {
+    $getCurrentData = function () {
         $questionGame = rand(1, 99);
         $correctAnswer = isPrime($questionGame) ? 'yes' : 'no';
-        return [$phraseGame, $questionGame, $correctAnswer];
+        return [$questionGame, $correctAnswer];
     };
-    goGame($currentData);
+    printGame($getCurrentData, TASK_PRIME_GAME);
 }

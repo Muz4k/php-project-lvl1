@@ -10,6 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\GreatestCommonDivision\getGcdGame;
+use function BrainGames\games\gcd\startGcdGame;
 
-getGcdGame();
+startGcdGame();

@@ -1,20 +1,21 @@
 <?php
 
-namespace  BrainGames\Even;
+namespace  BrainGames\games\even;
 
-use function BrainGames\Games\goGame;
+use function BrainGames\printGame;
 
-function isEven($number): bool
+const TASK_EVEN_GAME = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+function isEven($operand): bool
 {
-    return $number % 2 === 0;
+    return $operand % 2 === 0;
 }
-function getEvenGame()
+function startEvenGame()
 {
-    $phraseGame = "Answer \"yes\" if the number is even, otherwise answer \"no\".";
-    $currentData = function () use ($phraseGame) {
+    $getCurrentData = function () {
         $questionGame = rand(1, 99);
         $correctAnswer = isEven($questionGame) ? 'yes' : 'no';
-        return [$phraseGame, $questionGame, $correctAnswer];
+        return [$questionGame, $correctAnswer];
     };
-     goGame($currentData);
+     printGame($getCurrentData, TASK_EVEN_GAME);
 }

@@ -1,16 +1,18 @@
 <?php
 
-namespace  BrainGames\Progression;
+namespace  BrainGames\games\progression;
 
-use function BrainGames\Games\goGame;
+use function BrainGames\printGame;
 
-function makeProgression($member, $step, $numOfMembers, $result = [])
+const TASK_PROGRESSION_GAME = "What number is missing in the progression?";
+
+function makeProgression($firstMember, $step, $progressionLength)
 {
-    if ($numOfMembers === 0) {
-        return $result;
+    $result = [];
+    for ($memberCount = 0; $memberCount < $progressionLength; $memberCount++) {
+        $result[] = $firstMember + $step * $memberCount;
     }
-    $result[] = $member;
-    return makeProgression($member + $step, $step, $numOfMembers - 1, $result);
+    return $result;
 }
 
 function makeSpace($memberSpace, $progression, $space = '..')
@@ -18,18 +20,17 @@ function makeSpace($memberSpace, $progression, $space = '..')
     $progression[$memberSpace] = $space;
     return $progression;
 }
-function getProgressionGame()
+function startProgressionGame()
 {
-    $currentData = function () {
-        $phraseGame = "What number is missing in the progression?";
-        $member = rand(0, 5);
-        $step = rand(2, 5);
-        $numOfMembers = 10;
-        $memberSpace = rand(0, $numOfMembers - 1);
-        $arrayMembers = makeProgression($member, $step, $numOfMembers);
-        $correctAnswer = $arrayMembers[$memberSpace];
-        $questionGame = implode(' ', makeSpace($memberSpace, $arrayMembers));
-        return [$phraseGame, $questionGame, $correctAnswer];
+    $getCurrentData = function () {
+        $firstMember = rand(0, 5);
+        $stepProgression = rand(2, 5);
+        $progressionLength = 10;
+        $memberSpace = rand(0, $progressionLength - 1);
+        $progression = makeProgression($firstMember, $stepProgression, $progressionLength);
+        $correctAnswer = (string)$progression[$memberSpace];
+        $questionGame = implode(' ', makeSpace($memberSpace, $progression));
+        return [$questionGame, $correctAnswer];
     };
-    goGame($currentData);
+    printGame($getCurrentData, TASK_PROGRESSION_GAME);
 }

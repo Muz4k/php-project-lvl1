@@ -10,6 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\Even\getEvenGame;
+use function BrainGames\games\even\startEvenGame;
 
-getEvenGame();
+startEvenGame();
