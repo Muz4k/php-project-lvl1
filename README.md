@@ -6,7 +6,7 @@ This is a collection of command line games, one of the projects made while learn
 
 ## Installation
 - install composer globally, if you haven’t done it before (btw, why?;D);
-- to install brain-games run:
+- install brain-games:
     
     `composer global require muz4k/brain-games`
 
