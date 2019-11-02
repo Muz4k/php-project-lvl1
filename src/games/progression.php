@@ -1,10 +1,11 @@
 <?php
 
-namespace  BrainGames\games\progression;
+namespace  Brain\Games\games\progression;
 
-use function BrainGames\printGame;
+use function Brain\Games\startGame;
 
 const TASK_PROGRESSION_GAME = "What number is missing in the progression?";
+const PROGRESSION_LENGTH = 10;
 
 function makeProgression($firstMember, $step, $progressionLength)
 {
@@ -15,22 +16,21 @@ function makeProgression($firstMember, $step, $progressionLength)
     return $result;
 }
 
-function makeSpace($memberSpace, $progression, $space = '..')
+function makeQuestion($hiddenMemberSpace, $progression, $space = '..')
 {
-    $progression[$memberSpace] = $space;
+    $progression[$hiddenMemberSpace] = $space;
     return $progression;
 }
 function startProgressionGame()
 {
-    $getCurrentData = function () {
+    $getGameData = function () {
         $firstMember = rand(0, 5);
         $stepProgression = rand(2, 5);
-        $progressionLength = 10;
-        $memberSpace = rand(0, $progressionLength - 1);
-        $progression = makeProgression($firstMember, $stepProgression, $progressionLength);
-        $correctAnswer = (string)$progression[$memberSpace];
-        $questionGame = implode(' ', makeSpace($memberSpace, $progression));
+        $hiddenMemberSpace = rand(0, PROGRESSION_LENGTH - 1);
+        $progression = makeProgression($firstMember, $stepProgression, PROGRESSION_LENGTH);
+        $correctAnswer = (string)$progression[$hiddenMemberSpace];
+        $questionGame = implode(' ', makeQuestion($hiddenMemberSpace, $progression));
         return [$questionGame, $correctAnswer];
     };
-    printGame($getCurrentData, TASK_PROGRESSION_GAME);
+    startGame($getGameData, TASK_PROGRESSION_GAME);
 }

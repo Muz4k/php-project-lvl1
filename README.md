@@ -1,14 +1,29 @@
+# brain-games
+[![Maintainability](https://api.codeclimate.com/v1/badges/603b4976a5b7913c9bbd/maintainability)](https://codeclimate.com/github/Muz4k/php-project-lvl1/maintainability)[![Build Status](https://travis-ci.org/Muz4k/php-project-lvl1.svg?branch=master)](https://travis-ci.org/Muz4k/php-project-lvl1)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/603b4976a5b7913c9bbd/maintainability)](https://codeclimate.com/github/Muz4k/php-project-lvl1/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/603b4976a5b7913c9bbd/test_coverage)](https://codeclimate.com/github/Muz4k/php-project-lvl1/test_coverage)
-[![Build Status](https://travis-ci.org/Muz4k/php-project-lvl1.svg?branch=master)](https://travis-ci.org/Muz4k/php-project-lvl1)
+This is a collection of command line games, one of the projects made while learning on the Hexlet platform.
+[Read more about Hexlet (in Russian)](https://ru.hexlet.io/pages/about)
 
-[![asciicast](https://asciinema.org/a/97lph2qDEqDfWUdLDXGpupWGv.svg)](https://asciinema.org/a/97lph2qDEqDfWUdLDXGpupWGv)
+## Installation
+- install composer globally, if you haven’t done it before (btw, why?;D);
+- to install brain-games run:
+    
+    `composer global require muz4k/brain-games`
 
-[![asciicast](https://asciinema.org/a/ioWTnO0aGCFO24UM8YrK1UI7t.svg)](https://asciinema.org/a/ioWTnO0aGCFO24UM8YrK1UI7t)
+- enjoy it.
 
-[![asciicast](https://asciinema.org/a/4JHYu6JLyYauoDYV7SnNjej8L.svg)](https://asciinema.org/a/4JHYu6JLyYauoDYV7SnNjej8L)
+## How to play
+You can choose one of the games:
+- brain-even:
+![brain-even](gifs/even.gif)
+- brain-calc:
+![brain-calc](gifs/calc.gif)
+- brain-gcd:
+![brain-gcd](gifs/gcd.gif)
+- brain-prime:
+![brain-prime](gifs/prime.gif)
+- brain-progression:
+![brain-progression](gifs/progression.gif)
 
-[![asciicast](https://asciinema.org/a/kyIHIyfS47WBOqKGEr6EWbejs.svg)](https://asciinema.org/a/kyIHIyfS47WBOqKGEr6EWbejs)
-
-[![asciicast](https://asciinema.org/a/vNo2vaCMq2WdM4oaE7OSkqHQb.svg)](https://asciinema.org/a/vNo2vaCMq2WdM4oaE7OSkqHQb)
+## Importantly!
+**Don't** write `exit` at the end!

@@ -1,15 +1,15 @@
 <?php
 
-namespace  BrainGames\games\calc;
+namespace  Brain\Games\games\calc;
 
-use function BrainGames\printGame;
+use function Brain\Games\startGame;
 
 const TASK_CALC_GAME = "What is the result of the expression?";
 const OPERATORS = ["+", "-", "*"];
 
-function calculateCorrectAnswer($expressionOperator, $firstOperand, $secondOperand): string
+function calculate($operator, $firstOperand, $secondOperand): string
 {
-    switch ($expressionOperator) {
+    switch ($operator) {
         case "+":
             return $firstOperand + $secondOperand;
         case "-":
@@ -21,14 +21,14 @@ function calculateCorrectAnswer($expressionOperator, $firstOperand, $secondOpera
 
 function startCalcGame()
 {
-    $getCurrentData = function () {
+    $getGameData = function () {
         $firstOperand = rand(1, 99);
         $secondOperand = rand(1, 99);
-        $expressionOperator = OPERATORS[array_rand(OPERATORS, 1)];
-        $questionGame = "{$firstOperand} {$expressionOperator} {$secondOperand}";
-        $correctAnswer = calculateCorrectAnswer($expressionOperator, $firstOperand, $secondOperand);
+        $operator = OPERATORS[array_rand(OPERATORS, 1)];
+        $questionGame = "{$firstOperand} {$operator} {$secondOperand}";
+        $correctAnswer = calculate($operator, $firstOperand, $secondOperand);
         return [$questionGame, $correctAnswer];
     };
 
-    printGame($getCurrentData, TASK_CALC_GAME);
+    startGame($getGameData, TASK_CALC_GAME);
 }

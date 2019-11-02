@@ -1,8 +1,8 @@
 <?php
 
-namespace  BrainGames\games\even;
+namespace  Brain\Games\games\even;
 
-use function BrainGames\printGame;
+use function Brain\Games\startGame;
 
 const TASK_EVEN_GAME = 'Answer "yes" if the number is even, otherwise answer "no".';
 
@@ -12,10 +12,10 @@ function isEven($operand): bool
 }
 function startEvenGame()
 {
-    $getCurrentData = function () {
+    $getGameData = function () {
         $questionGame = rand(1, 99);
         $correctAnswer = isEven($questionGame) ? 'yes' : 'no';
         return [$questionGame, $correctAnswer];
     };
-     printGame($getCurrentData, TASK_EVEN_GAME);
+     startGame($getGameData, TASK_EVEN_GAME);
 }

@@ -1,4 +1,4 @@
-#!/usr/bin/php
+#!/usr/bin/env php
 
 <?php
 
@@ -10,6 +10,6 @@ if (file_exists($globalAutoloadPath)) {
     require_once $projectAutoloadPath;
 }
 
-use function BrainGames\games\even\startEvenGame;
+use function Brain\Games\games\even\startEvenGame;
 
 startEvenGame();
