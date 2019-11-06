@@ -23,10 +23,9 @@ function startGame($gameData, $gameTask)
         if ($userAnswer !== $correctAnswer) {
             err("'%s' is wrong answer ;(. Correct answer was '%s'.", $userAnswer, $correctAnswer);
             line("Let's try again, %s!", $nameGamer);
-            return false;
+            exit;
         }
         line("Correct!");
     }
     line("Congratulations, %s!", $nameGamer);
-    return true;
 }

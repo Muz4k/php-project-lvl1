@@ -7,7 +7,7 @@ use function Brain\Games\startGame;
 const TASK_CALC_GAME = "What is the result of the expression?";
 const OPERATORS = ["+", "-", "*"];
 
-function calculate($operator, $firstOperand, $secondOperand): string
+function calculateCorrectAnswer($operator, $firstOperand, $secondOperand): string
 {
     switch ($operator) {
         case "+":
@@ -26,7 +26,7 @@ function startCalcGame()
         $secondOperand = rand(1, 99);
         $operator = OPERATORS[array_rand(OPERATORS, 1)];
         $questionGame = "{$firstOperand} {$operator} {$secondOperand}";
-        $correctAnswer = calculate($operator, $firstOperand, $secondOperand);
+        $correctAnswer = calculateCorrectAnswer($operator, $firstOperand, $secondOperand);
         return [$questionGame, $correctAnswer];
     };
 
